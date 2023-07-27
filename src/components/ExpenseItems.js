@@ -1,12 +1,19 @@
-import React from "react";
+import "./expense-items.css";
 
-const ExpenseItems = () => {
+const ExpenseItems = (props) => {
+  const expenseDate = props.date;
+  const expenseTitle = props.title;
+  const expenseAmount = props.amount;
+  const locationOfExpenditure = props.location;
+
 	return (
-		<div>
-			<h1>ExpenseItems</h1>
-			<h2> Food Rs 10 </h2>
-			<h3> Petrol Rs 100 </h3>
-			<h4> Movies Rs 200 </h4>
+		<div className="expense-items">
+			<div>{expenseDate.toString()}</div>
+      <div className="expense-items__description">
+        <h2>{expenseTitle}</h2>
+        <h2>{locationOfExpenditure}</h2>
+        <div className="expense-item__price">${expenseAmount}</div>
+      </div>
 		</div>
 	);
 };
