@@ -1,5 +1,7 @@
 import React from 'react'
-import ExpenseItems from './components/ExpenseItems'
+import ExpenseItems from './components/expenses/ExpenseItems'
+import "./App.css";
+import Card from './components/ui/Card';
 
 const App = () => {
   const data = [
@@ -23,14 +25,13 @@ const App = () => {
     }
   ]
   return (
-    <div>
+    <Card className='expenses'>
       {
         data.map((item,index) => {
           return <ExpenseItems date={item.expenseDate} title={item.expenseTitle} amount={item.expenseAmount} location={item.locationOfExpenditure} key={index}/>
         })
-      }
-      
-    </div>
+      } 
+    </Card>
   )
 }
 
