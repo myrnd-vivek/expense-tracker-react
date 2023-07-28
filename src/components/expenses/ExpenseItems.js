@@ -10,10 +10,17 @@ const ExpenseItems = (props) => {
 	const expenseAmount = props.amount;
 	const locationOfExpenditure = props.location;
 
+
+	const deleteExpense = (index) => {
+		const card = document.querySelectorAll(".expense-item");
+		card[index].style.display = "none";
+	}
+
 	return (
 		<Card className="expense-item">
 	    <ExpenseDate date={expenseDate}/>
 	    <ExpenseDetails amount={expenseAmount} title={expenseTitle} location={locationOfExpenditure} />
+			<button onClick={() => deleteExpense(props.index)}>Delete Expense</button>
 		</Card>
 	);
 };

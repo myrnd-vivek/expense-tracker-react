@@ -28,7 +28,7 @@ const App = () => {
     <Card className='expenses'>
       {
         data.map((item,index) => {
-          return <ExpenseItems date={item.expenseDate} title={item.expenseTitle} amount={item.expenseAmount} location={item.locationOfExpenditure} key={index}/>
+          return <ExpenseItems date={item.expenseDate} title={item.expenseTitle} amount={item.expenseAmount} location={item.locationOfExpenditure} key={index} index={index}/>
         })
       } 
     </Card>
