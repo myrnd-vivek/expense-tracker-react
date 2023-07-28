@@ -2,6 +2,7 @@ import React from 'react'
 import ExpenseItems from './components/expenses/ExpenseItems'
 import "./App.css";
 import Card from './components/ui/Card';
+import ExpenseForm from './components/expenses/ExpenseForm';
 
 const App = () => {
   const data = [
@@ -31,6 +32,7 @@ const App = () => {
           return <ExpenseItems date={item.expenseDate} title={item.expenseTitle} amount={item.expenseAmount} location={item.locationOfExpenditure} key={index} index={index}/>
         })
       } 
+      <ExpenseForm />
     </Card>
   )
 }
