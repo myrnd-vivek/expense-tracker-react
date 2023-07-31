@@ -4,7 +4,6 @@ import ExpenseForm from './ExpenseForm';
 
 const NewExpense = ({addExpenseHandler}) => {
   const saveExpenseDataHandler = (data) => {
-    // console.log(data);
       addExpenseHandler(data)
   }
   return (
