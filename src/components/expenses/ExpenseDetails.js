@@ -1,7 +1,7 @@
-const ExpenseDetails = ({title,amount,location}) => {
+const ExpenseDetails = ({title,amount}) => {
   return (
     <div className="expense-item__description">
-      <h2>{title}, {location}</h2>
+      <h2>{title}</h2>
       <div className="expense-item__price">${amount}</div>
     </div>
   )

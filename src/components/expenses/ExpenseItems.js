@@ -8,13 +8,12 @@ const ExpenseItems = (props) => {
 
 	const expenseDate = props.date;
 	const expenseTitle = props.title;
-	const locationOfExpenditure = props.location;
 	const amount = props.amount;
 
 	return (
 		<Card className="expense-item">
 	    <ExpenseDate date={expenseDate}/>
-	    <ExpenseDetails amount={amount} title={expenseTitle} location={locationOfExpenditure} />
+	    <ExpenseDetails amount={amount} title={expenseTitle}/>
 		</Card>
 	);
 };
