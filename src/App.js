@@ -17,6 +17,7 @@ const INTIAL_EXPENSE = [
 const App = () => {
   const [expense,setExpense] = useState(INTIAL_EXPENSE);
   const [filteredYear, setFilteredYear] = useState('2022');
+  const [IsOpen, setIsOpen] = useState(false);
 
   const addExpenseHandler = (expense) => {
     console.log(expense);
@@ -37,7 +38,7 @@ const App = () => {
 
   return (
     <Card className='expenses'>
-      <NewExpense addExpenseHandler={addExpenseHandler} />
+      <NewExpense addExpenseHandler={addExpenseHandler} IsOpen={IsOpen} setIsOpen={setIsOpen}/>
 			<ExpenseFilter selected={filteredYear} dropDownChangeHandler={filterChangeHandler}/>
       {
         expense.map((item,index) => {
