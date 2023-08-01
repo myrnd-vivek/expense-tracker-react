@@ -44,6 +44,8 @@ const App = () => {
           return <ExpenseItems date={item.expenseDate} title={item.expenseTitle} amount={item.expenseAmount} key={index} />
         })
       } 
+      {expense.length === 1 && <p style={{color:"white"}}>Only single Expense here. Please add more...</p>}
+      {expense.length === 0 && <p style={{color:"white"}}>No expense found...</p>}
     </Card>
   )
 }
