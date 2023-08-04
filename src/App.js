@@ -4,6 +4,7 @@ import "./App.css";
 import Card from './components/ui/Card';
 import NewExpense from './components/new-expense/NewExpense';
 import ExpenseFilter from './components/expenses/ExpenseFilter';
+import ExpenseChart from './components/expenses/ExpenseChart';
 
 const INTIAL_EXPENSE = [
   {
@@ -12,15 +13,27 @@ const INTIAL_EXPENSE = [
     expenseTitle: 'Car Insurance',
     expenseAmount: '294.67',
   },
+  {
+    id: Math.random().toString(),
+    expenseDate: new Date(),
+    expenseTitle: 'Bike Insurance',
+    expenseAmount: '799',
+  },
+  {
+    id: Math.random().toString(),
+    expenseDate: new Date("2022-12-10"),
+    expenseTitle: 'New TV',
+    expenseAmount: '699',
+  },
 ]
 
 const App = () => {
   const [expense,setExpense] = useState(INTIAL_EXPENSE);
-  const [filteredYear, setFilteredYear] = useState('2022');
+  const [filteredExpense,setFilteredExpense] = useState(INTIAL_EXPENSE);
+  const [filteredYear, setFilteredYear] = useState('2023');
   const [IsOpen, setIsOpen] = useState(false);
 
   const addExpenseHandler = (expense) => {
-    console.log(expense);
     setExpense((prevState) => {
       return [expense,...prevState]
     })
@@ -33,20 +46,21 @@ const App = () => {
     const newExp = expense.filter((item) => {
       return item.expenseDate.getFullYear() ===  +selectedYear;
     })
-    setExpense(newExp);
+    setFilteredExpense(newExp);
 	}
 
   return (
     <Card className='expenses'>
       <NewExpense addExpenseHandler={addExpenseHandler} IsOpen={IsOpen} setIsOpen={setIsOpen}/>
 			<ExpenseFilter selected={filteredYear} dropDownChangeHandler={filterChangeHandler}/>
+      <ExpenseChart expenses={filteredExpense} />
       {
-        expense.map((item,index) => {
+        filteredExpense.map((item,index) => {
           return <ExpenseItems date={item.expenseDate} title={item.expenseTitle} amount={item.expenseAmount} key={index} />
         })
       } 
-      {expense.length === 1 && <p style={{color:"white"}}>Only single Expense here. Please add more...</p>}
-      {expense.length === 0 && <p style={{color:"white"}}>No expense found...</p>}
+      {filteredExpense.length === 1 && <h2 style={{color:"white"}}>Only single Expense here. Please add more...</h2>}
+      {filteredExpense.length === 0 && <h2 style={{color:"white"}}>No expense found...</h2>}
     </Card>
   )
 }
